@@ -22,6 +22,10 @@ Read [the versioned bond tax rule catalog](data/bond_tax_rules_2026.json) for **
 
 **Mandatory amendment check:** For every request, verify the effective legal edition for the event date, amendments, transitional clauses and later relevant official interpretations. Follow [the change-detection and document-request protocol](references/source-workflow.md). If full controlling texts cannot be accessed or changes cannot be ruled out reliably, **request the applicable full normative documents from the user** (e.g., ConsultantPlus DOCX), declare `UNVERIFIED_LEGAL_EDITION`, and withhold a definitive tax determination. Never silently rely on a 2026 snapshot.
 
+## Deterministic calculations (synthetic only)
+
+Use `scripts/bond_engine.py` for auditable Decimal calculations: coupon/NKD splitting, clean-price results, original issue discount, nominal amortization, FX realization, FIFO, indexed principal and indicative rate effects. Run `python -m unittest discover -s tests -v`. Tests T01–T16 are synthetic: T11, T13, T14, T15 and T16 require document-based legal stop gates. **Never substitute correct arithmetic for fresh verification of current law, relevant issue terms, or bank-level eligibility**. The Python engine returns `PROVISIONAL_PENDING_HUMAN_REVIEW` at best, not a definitive tax opinion.
+
 ## Procedure
 
 1. **Confirm critical facts.** Identify tax jurisdiction and tax period; bank role (investor, issuer, intermediary or withholding agent); own/client book; licenses including any securities-market professional license; accounting method and tax accounting policy; counterparties and residency. If a missing fact can change the rule, make it an explicit unresolved condition.
@@ -45,6 +49,7 @@ In these cases **produce the partial issue matrix and document checklist**, not 
 ## On-demand references
 
 - [Versioned bond tax rules — dates, rates, formulas, sources](data/bond_tax_rules_2026.json)
+- [Primary and secondary legal source registry](references/legal-source-registry.md)
 - [Source research, amendment validation and document-request protocol](references/source-workflow.md)
 - [Bond classification and tax event map](references/bonds.md)
 - [Risk and stop gates](references/risk-gates.md)
