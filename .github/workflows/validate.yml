@@ -16,3 +16,9 @@ jobs:
         run: python scripts/check_calculations.py
       - name: Unit tests
         run: python -m unittest discover -s tests -v
+
+      - name: Unified engine smoke tests (RUB, FX multi-lot and OFZ-IN)
+        run: |
+          python scripts/treasury_tax_engine.py examples/bond_lifecycle_t01.json > /tmp/unified-rub.json
+          python scripts/treasury_tax_engine.py examples/fx_multilot_synthetic.json > /tmp/unified-fx.json
+          python scripts/treasury_tax_engine.py examples/ofz_in_multilot_synthetic.json > /tmp/unified-ofzin.json
