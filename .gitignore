@@ -1,0 +1,17 @@
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.venv/
+venv/
+.env
+.env.*
+!.env.example
+.DS_Store
+Thumbs.db
+*.zip
+# Do not commit licensed legal databases, downloaded source documents, or bank data.
+private/
+confidential/
+source-documents/
+*.docx
+*.pdf

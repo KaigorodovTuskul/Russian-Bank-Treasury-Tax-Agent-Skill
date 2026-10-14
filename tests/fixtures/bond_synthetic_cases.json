@@ -1,0 +1,227 @@
+{
+  "title": "Research-preview synthetic bond scenarios",
+  "version": "0.1.0",
+  "as_of": "2026-10-14",
+  "status": "SYNTHETIC_ONLY_NOT_LEGALLY_VALIDATED",
+  "description": "Arithmetic and stop-gate regression inputs; no fixture establishes real tax treatment, payable tax or approved law.",
+  "cases": [
+    {
+      "id": "T01",
+      "name": "OFZ coupon-NKD cash reconciliation",
+      "scope": "synthetic",
+      "legal_status": "PROVISIONAL",
+      "decision": "PROVISIONAL",
+      "kind": "coupon_nkd",
+      "facts": {
+        "buy_clean": "980",
+        "buy_nkd": "30",
+        "coupon_cash": "60",
+        "sell_clean": "990",
+        "sell_nkd": "12"
+      },
+      "expected": {
+        "gross_cash_profit": "52",
+        "analytical_coupon_component": "42",
+        "analytical_clean_component": "10"
+      },
+      "required_evidence": [
+        "dated primary legal text",
+        "bond issue terms",
+        "event dates",
+        "tax base/rate verification"
+      ]
+    },
+    {
+      "id": "T06",
+      "name": "Public zero-coupon issue discount",
+      "scope": "synthetic",
+      "legal_status": "PROVISIONAL",
+      "decision": "PROVISIONAL",
+      "kind": "issue_discount",
+      "facts": {
+        "nominal": "1000",
+        "primary_weighted_price": "920",
+        "bank_purchase_price": "900"
+      },
+      "expected": {
+        "issue_discount": "80",
+        "other_redemption_result": "20",
+        "gross_result": "100"
+      },
+      "required_evidence": [
+        "primary placement record",
+        "event-date Article 281",
+        "qualified issue category"
+      ]
+    },
+    {
+      "id": "T08",
+      "name": "Partial amortization",
+      "scope": "synthetic",
+      "legal_status": "PROVISIONAL",
+      "decision": "PROVISIONAL",
+      "kind": "amort",
+      "facts": {
+        "tax_cost": "960",
+        "nominal": "1000",
+        "principal_payments": [
+          "400",
+          "600"
+        ]
+      },
+      "expected": {
+        "cost_allocations": [
+          "384",
+          "576"
+        ],
+        "remaining_tax_cost": "0",
+        "residual_profit": "40"
+      },
+      "required_evidence": [
+        "issue amortization terms",
+        "dated Article 280(6)",
+        "acquisition tax-cost ledger"
+      ]
+    },
+    {
+      "id": "T09",
+      "name": "Indexed principal and coupon (double-count guard)",
+      "scope": "synthetic",
+      "legal_status": "PROVISIONAL",
+      "decision": "PROVISIONAL",
+      "kind": "indexation",
+      "facts": {
+        "purchase_cost": "1000",
+        "initial_nominal": "1000",
+        "final_nominal": "1020",
+        "coupon": "20"
+      },
+      "expected": {
+        "indexation": "20",
+        "coupon": "20",
+        "gross_cash_profit": "40",
+        "duplicate_disposal_indexation": "0"
+      },
+      "required_evidence": [
+        "dated OFZ-IN terms",
+        "effective law",
+        "verified negative indexation policy"
+      ]
+    },
+    {
+      "id": "T10",
+      "name": "FX bond sale translation",
+      "scope": "synthetic",
+      "legal_status": "PROVISIONAL",
+      "decision": "PROVISIONAL",
+      "kind": "fx_sale",
+      "facts": {
+        "buy_usd": "1000",
+        "buy_rate_rub": "90",
+        "sell_usd": "1000",
+        "sell_rate_rub": "100"
+      },
+      "expected": {
+        "gross_rub_result": "10000"
+      },
+      "required_evidence": [
+        "official FX rates",
+        "trade and title date",
+        "effective Article 280"
+      ]
+    },
+    {
+      "id": "T12",
+      "name": "FIFO lot attribution",
+      "scope": "synthetic",
+      "legal_status": "PROVISIONAL",
+      "decision": "PROVISIONAL",
+      "kind": "fifo",
+      "facts": {
+        "first_lot_qty": 10,
+        "first_lot_unit": "940",
+        "second_lot_qty": 10,
+        "second_lot_unit": "980",
+        "sold_qty": 10,
+        "sell_unit": "970"
+      },
+      "expected": {
+        "first_in_first_out_cost": "9400",
+        "sale_revenue": "9700",
+        "gross_profit": "300"
+      },
+      "required_evidence": [
+        "tax accounting policy",
+        "lot trail",
+        "effective Article 280"
+      ]
+    },
+    {
+      "id": "T14",
+      "name": "Cancelled coupon on perpetual subordinated bond",
+      "scope": "synthetic",
+      "legal_status": "BLOCKED",
+      "decision": "BLOCKED",
+      "kind": "stop",
+      "facts": {
+        "conditional_coupon": "100",
+        "issuance_terms_present": false
+      },
+      "expected": {
+        "approved_tax_amount": null,
+        "stop_reason": "ISSUE_TERMS"
+      },
+      "required_evidence": [
+        "official conditions of issue",
+        "entitlement date",
+        "prior accrued tax income",
+        "issuer notice"
+      ]
+    },
+    {
+      "id": "T15",
+      "name": "Subordinated debt write-down",
+      "scope": "synthetic",
+      "legal_status": "BLOCKED",
+      "decision": "BLOCKED",
+      "kind": "stop",
+      "facts": {
+        "candidate_tax_cost": "900",
+        "issuer_write_down_claim": true,
+        "termination_evidence_present": false
+      },
+      "expected": {
+        "approved_tax_amount": null,
+        "stop_reason": "ISSUE_TERMS"
+      },
+      "required_evidence": [
+        "official write-down event and basis",
+        "terms and original tax cost",
+        "effective Article 280",
+        "tax base/licensing facts"
+      ]
+    },
+    {
+      "id": "T16",
+      "name": "NKD paid to foreign bond seller — withholding question",
+      "scope": "synthetic",
+      "legal_status": "BLOCKED",
+      "decision": "BLOCKED",
+      "kind": "stop",
+      "facts": {
+        "counterparty_resident": false,
+        "beneficial_owner_docs_present": false
+      },
+      "expected": {
+        "approved_tax_amount": null,
+        "stop_reason": "WITHHOLDING"
+      },
+      "required_evidence": [
+        "contract and settlement breakdown",
+        "counterparty residence",
+        "beneficial ownership",
+        "effective tax-agent rules and treaty status"
+      ]
+    }
+  ]
+}
