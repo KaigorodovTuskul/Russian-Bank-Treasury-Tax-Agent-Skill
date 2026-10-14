@@ -1,0 +1,490 @@
+{
+  "schema_version": "0.2",
+  "jurisdiction": "RU",
+  "taxpayer": "Russian joint-stock commercial bank with universal banking license; own portfolio",
+  "legal_snapshot_date": "2026-10-14",
+  "supersession_policy": "No rule may be used as final advice without checking applicable legal edition, effective date, transitional changes and conditions at event date.",
+  "status": "RESEARCH_PREVIEW_PENDING_LEGAL_AND_HUMAN_REVIEW",
+  "rates_note": "Percent rates are legally contextual, not guaranteed for all ISIN or future dates.",
+  "rules": [
+    {
+      "id": "BND-GEN-25",
+      "title": "Базовая ставка налога на прибыль",
+      "as_of": "2026-10-14",
+      "valid_from": "2025-01-01",
+      "valid_to": null,
+      "rate_percent": 25,
+      "tax_base": "general_profit",
+      "required_conditions": [
+        "bank_russian_taxpayer",
+        "no_special_rate_applicable"
+      ],
+      "formula_id": "general_rate",
+      "hardcoded_answer": "Formula: max(tax_base, 0) * 0.25. Not a per-transaction final tax amount.",
+      "primary_provision": "НК РФ ст.284 п.1",
+      "readiness": "normative_checked",
+      "real_transaction_status": "REQUIRES_FRESH_LEGAL_EVIDENCE",
+      "sources": [
+        "NK-RU-284"
+      ]
+    },
+    {
+      "id": "BND-OFZ-INT-20",
+      "title": "Процент по внутренним государственным ценным бумагам РФ",
+      "as_of": "2026-10-14",
+      "valid_from": "2025-01-01",
+      "valid_to": null,
+      "rate_percent": 20,
+      "tax_base": "separate_interest",
+      "required_conditions": [
+        "qualifying_state_debt",
+        "issue_terms_specify_interest",
+        "not_excluded_foreign_placement",
+        "no_284_8_exclusion"
+      ],
+      "formula_id": "interest_rate",
+      "hardcoded_answer": "Coupon/eligible interest × 0.20; check issue terms, issue status and special exclusions.",
+      "primary_provision": "НК РФ ст.284 п.4 пп.1",
+      "readiness": "normative_checked",
+      "real_transaction_status": "REQUIRES_FRESH_LEGAL_EVIDENCE",
+      "sources": [
+        "NK-RU-284"
+      ]
+    },
+    {
+      "id": "BND-SUBJ-INT-20",
+      "title": "Проценты по государственным ценным бумагам субъекта РФ",
+      "as_of": "2026-10-14",
+      "valid_from": "2025-01-01",
+      "valid_to": null,
+      "rate_percent": 20,
+      "tax_base": "separate_interest",
+      "required_conditions": [
+        "issuer_subject_rf",
+        "issue_terms_specify_interest",
+        "no_historical_exception",
+        "no_284_8_exclusion"
+      ],
+      "formula_id": "interest_rate",
+      "hardcoded_answer": "Interest × 0.20 after verification.",
+      "primary_provision": "НК РФ ст.284 п.4 пп.1",
+      "readiness": "normative_checked",
+      "real_transaction_status": "REQUIRES_FRESH_LEGAL_EVIDENCE",
+      "sources": [
+        "NK-RU-284"
+      ]
+    },
+    {
+      "id": "BND-MUNI-INT-20",
+      "title": "Проценты по муниципальным бумагам",
+      "as_of": "2026-10-14",
+      "valid_from": "2025-01-01",
+      "valid_to": null,
+      "rate_percent": 20,
+      "tax_base": "separate_interest",
+      "required_conditions": [
+        "issuer_municipality",
+        "no_legacy_9_or_0",
+        "no_284_8_exclusion"
+      ],
+      "formula_id": "interest_rate",
+      "hardcoded_answer": "Interest × 0.20 after verification.",
+      "primary_provision": "НК РФ ст.284 п.4 пп.1",
+      "readiness": "normative_checked",
+      "real_transaction_status": "REQUIRES_FRESH_LEGAL_EVIDENCE",
+      "sources": [
+        "NK-RU-284"
+      ]
+    },
+    {
+      "id": "BND-CORP-RUB-INT-20",
+      "title": "Проценты по квалифицируемым рублёвым облигациям российских организаций",
+      "as_of": "2026-10-14",
+      "valid_from": "2025-01-01",
+      "valid_to": null,
+      "rate_percent": 20,
+      "tax_base": "separate_interest",
+      "required_conditions": [
+        "issuer_russian_organization_not_foreign_resident",
+        "ruble_denominated_nominal",
+        "issue_date_on_or_after_2017_01_01",
+        "tax_traded_status_on_EACH_interest_recognition_date",
+        "no_284_8_exclusion"
+      ],
+      "formula_id": "interest_rate",
+      "hardcoded_answer": "Interest × 0.20; listing flag alone is insufficient.",
+      "primary_provision": "НК РФ ст.284 п.4 пп.1; ст.280 п.9",
+      "readiness": "normative_checked",
+      "real_transaction_status": "REQUIRES_FRESH_LEGAL_EVIDENCE",
+      "sources": [
+        "NK-RU-280",
+        "NK-RU-284"
+      ]
+    },
+    {
+      "id": "BND-MORTGAGE-INT-20",
+      "title": "Проценты по ипотечным облигациям после 1 января 2007",
+      "as_of": "2026-10-14",
+      "valid_from": "2025-01-01",
+      "valid_to": null,
+      "rate_percent": 20,
+      "tax_base": "separate_interest",
+      "required_conditions": [
+        "mortgage_covered_bond",
+        "issued_after_2007_01_01",
+        "no_284_8_exclusion"
+      ],
+      "formula_id": "interest_rate",
+      "hardcoded_answer": "Interest × 0.20; strict AFTER 2007-01-01 wording.",
+      "primary_provision": "НК РФ ст.284 п.4 пп.1",
+      "readiness": "normative_checked",
+      "real_transaction_status": "REQUIRES_FRESH_LEGAL_EVIDENCE",
+      "sources": [
+        "NK-RU-284"
+      ]
+    },
+    {
+      "id": "BND-MUNI-LEGACY-INT-9",
+      "title": "Исторические муниципальные выпуски",
+      "as_of": "2026-10-14",
+      "valid_from": "2025-01-01",
+      "valid_to": null,
+      "rate_percent": 9,
+      "tax_base": "separate_interest",
+      "required_conditions": [
+        "municipal_bond",
+        "issued_before_2007_01_01",
+        "original_issue_term_at_least_3_years",
+        "no_284_8_exclusion"
+      ],
+      "formula_id": "interest_rate",
+      "hardcoded_answer": "Interest × 0.09.",
+      "primary_provision": "НК РФ ст.284 п.4 пп.2",
+      "readiness": "normative_checked",
+      "real_transaction_status": "REQUIRES_FRESH_LEGAL_EVIDENCE",
+      "sources": [
+        "NK-RU-284"
+      ]
+    },
+    {
+      "id": "BND-LEGACY-GOV-MUNI-INT-0",
+      "title": "Облигации до 20 января 1997 включительно",
+      "as_of": "2026-10-14",
+      "valid_from": "2025-01-01",
+      "valid_to": null,
+      "rate_percent": 0,
+      "tax_base": "separate_interest",
+      "required_conditions": [
+        "state_or_municipal_bond",
+        "issue_date_on_or_before_1997_01_20",
+        "no_284_8_exclusion"
+      ],
+      "formula_id": "interest_rate",
+      "hardcoded_answer": "Interest × 0.00.",
+      "primary_provision": "НК РФ ст.284 п.4 пп.3",
+      "readiness": "normative_checked",
+      "real_transaction_status": "REQUIRES_FRESH_LEGAL_EVIDENCE",
+      "sources": [
+        "NK-RU-284"
+      ]
+    },
+    {
+      "id": "BND-CLEAN-PRICE-RESULT",
+      "title": "Результат реализации без двойного учёта НКД",
+      "as_of": "2026-10-14",
+      "valid_from": null,
+      "valid_to": null,
+      "rate_percent": null,
+      "tax_base": "general_or_specific_base",
+      "required_conditions": [
+        "documented_acquisition_and_disposal",
+        "correct_accrued_interest_split",
+        "verified_tax_cost_and_fees"
+      ],
+      "formula_id": "realized_result",
+      "hardcoded_answer": "Disposal clean proceeds − remaining tax acquisition cost − allowable disposal expenses; accrued interest handled in a separate ledger.",
+      "primary_provision": "НК РФ ст.280 п.2-3, п.30; ст.281, 328-329",
+      "readiness": "normative_framework",
+      "real_transaction_status": "REQUIRES_FRESH_LEGAL_EVIDENCE",
+      "sources": [
+        "NK-RU-280",
+        "NK-RU-281",
+        "NK-RU-328"
+      ]
+    },
+    {
+      "id": "BND-NKD-LEDGER",
+      "title": "НКД и купонный доход за период владения",
+      "as_of": "2026-10-14",
+      "valid_from": null,
+      "valid_to": null,
+      "rate_percent": null,
+      "tax_base": "separate_interest_or_general",
+      "required_conditions": [
+        "coupon_period_documents",
+        "paid_nkd_recorded",
+        "prior_recognized_interest_recorded",
+        "appropriate_tax_method"
+      ],
+      "formula_id": "coupon_split",
+      "hardcoded_answer": "For a simple whole coupon period: received coupon − purchased NKD; plus accrued interest from the next period on disposal; monthly recognitions must reconcile with coupons.",
+      "primary_provision": "НК РФ ст.280; ст.281; ст.328 п.5,7",
+      "readiness": "normative_framework",
+      "real_transaction_status": "REQUIRES_FRESH_LEGAL_EVIDENCE",
+      "sources": [
+        "NK-RU-280",
+        "NK-RU-281",
+        "NK-RU-328"
+      ]
+    },
+    {
+      "id": "BND-ORIGINAL-DISCOUNT",
+      "title": "Эмиссионный дисконт государственной или муниципальной бумаги",
+      "as_of": "2026-10-14",
+      "valid_from": null,
+      "valid_to": null,
+      "rate_percent": null,
+      "tax_base": "interest",
+      "required_conditions": [
+        "government_or_municipal_eligible_issue",
+        "no_coupon_rate",
+        "verified_weighted_average_primary_placement_price"
+      ],
+      "formula_id": "original_issue_discount",
+      "hardcoded_answer": "Nominal − weighted-average primary placement price; do NOT confuse with secondary purchase discount.",
+      "primary_provision": "НК РФ ст.43 п.3; ст.281; ст.328",
+      "readiness": "normative_checked",
+      "real_transaction_status": "REQUIRES_FRESH_LEGAL_EVIDENCE",
+      "sources": [
+        "NK-RU-281",
+        "NK-RU-328"
+      ]
+    },
+    {
+      "id": "BND-MARKET-DISCOUNT",
+      "title": "Рыночный дисконт / премия",
+      "as_of": "2026-10-14",
+      "valid_from": null,
+      "valid_to": null,
+      "rate_percent": null,
+      "tax_base": "disposal_result",
+      "required_conditions": [
+        "ordinary_coupon_issue",
+        "market_purchase_price_documented",
+        "no_other_issue_discount_rule"
+      ],
+      "formula_id": "market_discount",
+      "hardcoded_answer": "Nominal − secondary acquisition price is NOT automatically monthly coupon interest; ordinarily captured at disposal.",
+      "primary_provision": "НК РФ ст.280; ст.328",
+      "readiness": "normative_framework",
+      "real_transaction_status": "REQUIRES_FRESH_LEGAL_EVIDENCE",
+      "sources": [
+        "NK-RU-280",
+        "NK-RU-328"
+      ]
+    },
+    {
+      "id": "BND-AMORTIZED-REDEMPTION",
+      "title": "Частичное погашение номинала",
+      "as_of": "2026-10-14",
+      "valid_from": null,
+      "valid_to": null,
+      "rate_percent": null,
+      "tax_base": "disposal_result",
+      "required_conditions": [
+        "issue_schedule_has_principal_amortization",
+        "post_acquisition_total_principal_schedule_known",
+        "principal_cash_received"
+      ],
+      "formula_id": "partial_amortization",
+      "hardcoded_answer": "Cost allocated = acquisition tax cost × actual principal repaid / total principal repayable after acquisition.",
+      "primary_provision": "НК РФ ст.280 п.6",
+      "readiness": "normative_checked",
+      "real_transaction_status": "REQUIRES_FRESH_LEGAL_EVIDENCE",
+      "sources": [
+        "NK-RU-280"
+      ]
+    },
+    {
+      "id": "BND-FIFO-UNIT",
+      "title": "Методы списания стоимости выбывающих бумаг",
+      "as_of": "2026-10-14",
+      "valid_from": null,
+      "valid_to": null,
+      "rate_percent": null,
+      "tax_base": "disposal_result",
+      "required_conditions": [
+        "tax_accounting_policy_method_known",
+        "lots_identified",
+        "unit_identification_if_unit_cost"
+      ],
+      "formula_id": "lot_allocation",
+      "hardcoded_answer": "Either FIFO or specific unit cost under tax accounting policy, not retrospective cherry-picking.",
+      "primary_provision": "НК РФ ст.280 п.23; ст.329",
+      "readiness": "normative_checked",
+      "real_transaction_status": "REQUIRES_FRESH_LEGAL_EVIDENCE",
+      "sources": [
+        "NK-RU-280"
+      ]
+    },
+    {
+      "id": "BND-FX-NO-REVALUE",
+      "title": "Нет текущей валютной налоговой переоценки самой бумаги",
+      "as_of": "2026-10-14",
+      "valid_from": null,
+      "valid_to": null,
+      "rate_percent": null,
+      "tax_base": "disposal_result",
+      "required_conditions": [
+        "foreign_currency_denomination",
+        "acquisition_fx_rate_documented",
+        "disposal_fx_rate_documented"
+      ],
+      "formula_id": "fx_disposal",
+      "hardcoded_answer": "Sale amount in FX × disposal rate − acquisition cost in FX × acquisition rate. Separate coupon receivables and FX balances are different items.",
+      "primary_provision": "НК РФ ст.280 п.2-4",
+      "readiness": "normative_checked",
+      "real_transaction_status": "REQUIRES_FRESH_LEGAL_EVIDENCE",
+      "sources": [
+        "NK-RU-280"
+      ]
+    },
+    {
+      "id": "BND-INDEXED-OFZ",
+      "title": "Индексация номинала ОФЗ-ИН",
+      "as_of": "2026-10-14",
+      "valid_from": null,
+      "valid_to": null,
+      "rate_percent": null,
+      "tax_base": "interest_and_cost",
+      "required_conditions": [
+        "issue_terms_indexation",
+        "positive_or_negative_indexation",
+        "previously_recognized_indexation_ledger"
+      ],
+      "formula_id": "indexed_principal",
+      "hardcoded_answer": "Track indexed interest and exclude repeated recognition on redemption. Negative indexation has special restrictions.",
+      "primary_provision": "НК РФ ст.280-281, ст.328; Минфин 14.07.2015 №03-03-10/40395; 13.12.2022 №03-03-06/2/122113",
+      "readiness": "provisional_interpretation",
+      "real_transaction_status": "REQUIRES_FRESH_LEGAL_EVIDENCE",
+      "sources": [
+        "NK-RU-280",
+        "NK-RU-281",
+        "NK-RU-328"
+      ]
+    },
+    {
+      "id": "BND-REPLACEMENT",
+      "title": "Замещение еврооблигаций",
+      "as_of": "2026-10-14",
+      "valid_from": null,
+      "valid_to": null,
+      "rate_percent": null,
+      "tax_base": "carryover_cost",
+      "required_conditions": [
+        "replacement_structure_qualified",
+        "issue_conditions_and_exchange_documents",
+        "all_owned_bonds_of_issue_exchanged_if_5_2",
+        "check_relevant_cutoff_5_1_or_5_2",
+        "applicable_value_caps_verified"
+      ],
+      "formula_id": "replacement",
+      "hardcoded_answer": "Only carry over cost when a specific statutory regime is proven; two regimes have DIFFERENT prerequisites.",
+      "primary_provision": "НК РФ ст.251 п.1 пп.33.5; ст.270; ст.280 п.5.1,5.2",
+      "readiness": "hard_stop",
+      "real_transaction_status": "REQUIRES_FRESH_LEGAL_EVIDENCE",
+      "sources": [
+        "NK-RU-280"
+      ]
+    },
+    {
+      "id": "BND-NONTRADED-BANK-LOSS",
+      "title": "Убыток по необращающейся бумаге",
+      "as_of": "2026-10-14",
+      "valid_from": null,
+      "valid_to": null,
+      "rate_percent": null,
+      "tax_base": "separate_loss_base",
+      "required_conditions": [
+        "traded_status_evidence",
+        "bank_professional_securities_license_verified_if_special_offset",
+        "tax_base_and_loss_eligibility"
+      ],
+      "formula_id": "loss_base",
+      "hardcoded_answer": "Bank universal license alone is not proof of professional-securities license; no automatic general-base offset.",
+      "primary_provision": "НК РФ ст.280 п.26; ст.329",
+      "readiness": "hard_stop",
+      "real_transaction_status": "REQUIRES_FRESH_LEGAL_EVIDENCE",
+      "sources": [
+        "NK-RU-280"
+      ]
+    },
+    {
+      "id": "BND-CANCELLED-PERP-COUPON",
+      "title": "Отмена купона бессрочной/субординированной облигации",
+      "as_of": "2026-10-14",
+      "valid_from": null,
+      "valid_to": null,
+      "rate_percent": null,
+      "tax_base": "unresolved",
+      "required_conditions": [
+        "exact_coupon_waiver_terms",
+        "binding_right_to_coupon",
+        "prior_tax_accruals"
+      ],
+      "formula_id": "legal_review_required",
+      "hardcoded_answer": "Do not automatically accrue OR reverse income.",
+      "primary_provision": "395-1 ст.25.1; НК РФ ст.271,328; точные условия выпуска",
+      "readiness": "hard_stop",
+      "real_transaction_status": "REQUIRES_FRESH_LEGAL_EVIDENCE",
+      "sources": [
+        "NK-RU-328"
+      ]
+    },
+    {
+      "id": "BND-WRITEDOWN-CONVERSION",
+      "title": "Списание номинала или конвертация суборда",
+      "as_of": "2026-10-14",
+      "valid_from": null,
+      "valid_to": null,
+      "rate_percent": null,
+      "tax_base": "unresolved",
+      "required_conditions": [
+        "legally_effective_extinguishment_or_conversion",
+        "exact_issue_terms",
+        "accounting_and_tax_event_date",
+        "proper_loss_tax_base"
+      ],
+      "formula_id": "legal_review_required",
+      "hardcoded_answer": "Do not automatically deduct cost, transfer cost to shares, or recognize a tax benefit.",
+      "primary_provision": "395-1 ст.25.1; НК РФ ст.280 п.3,25",
+      "readiness": "hard_stop",
+      "real_transaction_status": "REQUIRES_FRESH_LEGAL_EVIDENCE",
+      "sources": [
+        "NK-RU-280"
+      ]
+    },
+    {
+      "id": "BND-WITHHOLDING-NONRESIDENT",
+      "title": "Покупка бумаги и выплата НКД нерезиденту",
+      "as_of": "2026-10-14",
+      "valid_from": null,
+      "valid_to": null,
+      "rate_percent": null,
+      "tax_base": "agent_withholding_review",
+      "required_conditions": [
+        "counterparty_residence",
+        "legal_nature_of_payment",
+        "beneficial_owner",
+        "tax_agent_status",
+        "applicable_treaty_and_suspension"
+      ],
+      "formula_id": "legal_review_required",
+      "hardcoded_answer": "Determine tax-agent obligation separately from bank own-income tax; hard stop if facts missing.",
+      "primary_provision": "НК РФ ст.309-312; treaties and current suspensions",
+      "readiness": "hard_stop",
+      "real_transaction_status": "REQUIRES_FRESH_LEGAL_EVIDENCE",
+      "sources": []
+    }
+  ]
+}
