@@ -45,6 +45,11 @@ For several acquisition lots and partial FIFO sales, use [`scripts/multilot_bond
 
 **Default entry point for supported bond events:** [`scripts/treasury_tax_engine.py`](../../scripts/treasury_tax_engine.py). This orchestrator validates one-ISIN event input, detects RUB ordinary / FX Russian corporate / positive-index OFZ-IN, and selects the appropriate existing single-lot or multi-lot backend. Read [`docs/TREASURY_TAX_ENGINE.md`](../../docs/TREASURY_TAX_ENGINE.md) before using it. Its normalized output links each arithmetic component to a stored dated rule, applicability conditions and source reference. Never treat these pointers or hard-coded rates as up-to-date law. Check controlling legal editions, amendment laws and issue terms on every request; if inaccessible, ask the user for full texts. **Every calculation remains UNVERIFIED_LEGAL_EDITION with approved tax = null until independent checks and human review.** Instruments outside supported scope are blocked.
 
+
+## Legal Rules Engine (mandatory evidence gate)
+
+After unified ledger arithmetic, the [offline rules evaluator](../../scripts/legal_rules_engine.py) assesses EACH tax row against dated rule IDs, known rate/base compatibility, required issue and bank predicates, primary-law source IDs and amendment-check records; see [full instructions](../../docs/LEGAL_RULES_ENGINE.md). **No actual law is fetched or authenticated by Python**: a user-provided file name, metadata assertion or search result cannot prove that tax law remains unchanged. For inaccessible legal texts or uncertain amendment history, request precise dated NK RF editions and amendment texts, issuer terms and tax records. Do not impute 20%/25% to a rate-less coupon ledger row or credit negative price results automatically; hard-stop complex matters. The code NEVER releases an approved tax amount even if all claimed metadata is supplied.
+
 ## Procedure
 
 1. **Confirm critical facts.** Identify tax jurisdiction and tax period; bank role (investor, issuer, intermediary or withholding agent); own/client book; licenses including any securities-market professional license; accounting method and tax accounting policy; counterparties and residency. If a missing fact can change the rule, make it an explicit unresolved condition.
