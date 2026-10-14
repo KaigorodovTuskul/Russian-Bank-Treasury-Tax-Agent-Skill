@@ -86,6 +86,10 @@ The [advanced bond ledger](scripts/advanced_bond_ledger.py) adds conservative, o
 
 The [multi-lot event ledger](scripts/multilot_bond_ledger.py) supports multiple purchases of one ISIN, partial FIFO sales across lots, per-lot acquired NKD, historical FX rates, positive nominal indexation and full cash-flow reconciliation. It includes [FX](examples/fx_multilot_synthetic.json) and [OFZ-IN](examples/ofz_in_multilot_synthetic.json) end-to-end examples, [39 focused regression tests](tests/test_multilot_bond_ledger.py) and [detailed documentation](docs/MULTILOT_BOND_LEDGER.md). This remains a synthetic research calculator only: no legal freshness verification is performed by the code and no approved tax amount is produced.
 
+## Unified Treasury Tax Engine (v0.3 draft)
+
+The [unified entry point](scripts/treasury_tax_engine.py) routes RUB ordinary bonds, Russian corporate FX bonds and OFZ-IN to existing specialized calculation backends, harmonizes per-event tax component reports and attaches versioned legal rule references, conditions and missing-document requirements. Use [the integration fixture](examples/unified_fx_multilot_request.json), [the 26 integration tests](tests/test_treasury_tax_engine.py) and [developer reference](docs/TREASURY_TAX_ENGINE.md). **No live legal changes are automatically checked by the Python code; the agent must verify effective text or request user documents.** All reported taxes remain unapproved.
+
 ## Validate
 
 Requires Python 3.9+; no third-party Python packages are required.
