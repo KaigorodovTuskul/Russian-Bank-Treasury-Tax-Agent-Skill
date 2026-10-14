@@ -1,0 +1,11 @@
+{
+  "schema_version": "1.0",
+  "note": "Synthetic only; dates and prices are illustrative, no real ISIN or verified legal edition",
+  "events": [
+    {"id":"BUY-1","date":"2026-01-10","type":"BUY","security_id":"SYNTH-OFZ-001","lot_id":"LOT-1","quantity":"1","clean_price_unit":"980","nkd_unit":"30","fees_rub":"0","principal_unit":"1000","coupon_period":"2026-C1","coupon_rule_id":"BND-OFZ-INT-20","currency":"RUB","traded_market_status":"TRADED"},
+    {"id":"JAN-CLOSE","date":"2026-01-31","type":"ACCRUE","security_id":"SYNTH-OFZ-001","nkd_unit":"45","coupon_period":"2026-C1"},
+    {"id":"COUPON-1","date":"2026-02-15","type":"COUPON","security_id":"SYNTH-OFZ-001","coupon_unit":"60","coupon_period":"2026-C1"},
+    {"id":"FEB-CLOSE","date":"2026-02-28","type":"ACCRUE","security_id":"SYNTH-OFZ-001","nkd_unit":"10","coupon_period":"2026-C2"},
+    {"id":"SELL-1","date":"2026-03-02","type":"SELL","security_id":"SYNTH-OFZ-001","quantity":"1","clean_price_unit":"990","nkd_unit":"12","fees_rub":"0","coupon_period":"2026-C2"}
+  ]
+}

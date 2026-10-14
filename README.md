@@ -73,6 +73,15 @@ The draft includes 21 versioned rule records with concrete rates, applicability 
 
 **Mandatory freshness control:** Before applying a stored rule to a real transaction, validate effective historical/current tax law, all amendments and transitional provisions and bond terms. If controlling full text cannot be accessed, ask the user to supply the full relevant legal editions (e.g., licensed ConsultantPlus exports). Never claim a law is unchanged based only on missing search results. Calculations remain provisional pending legal and human review.
 
+## Event-sourced bond ledger (development branch)
+
+An additional [RUB coupon-bond lifecycle ledger](docs/BOND_EVENT_LEDGER.md) processes purchase, monthly accrual, coupon, principal amortization, FIFO sale and final redemption. [Example input](examples/bond_lifecycle_t01.json) and [21 focused tests](tests/test_bond_ledger.py) cover cash-flow reconciliation and legal stop gates. Run `python scripts/bond_ledger.py examples/bond_lifecycle_t01.json`. The resulting tax rows are *candidates only*: not verified tax rates, market status or operational tax entries.
+
+
+## FX and OFZ-IN lifecycle extension (experimental)
+
+The [advanced bond ledger](scripts/advanced_bond_ledger.py) adds conservative, one-lot synthetic lifecycle models for ordinary Russian corporate FX bonds and positive-index OFZ-IN. It separates historical currency acquisition cost, accrued coupon receivables, purchased NKD FX differences (explicitly unclassified) and indexed nominal income. Run `python -m unittest discover -s tests -v` and consult [scope and caveats](docs/ADVANCED_BOND_LEDGER.md). All legal conclusions remain blocked or provisional pending full texts, issue documentation, current-law verification and expert sign-off.
+
 ## Validate
 
 Requires Python 3.9+; no third-party Python packages are required.
