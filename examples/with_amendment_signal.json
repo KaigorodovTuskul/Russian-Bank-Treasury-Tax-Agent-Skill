@@ -1,0 +1,15 @@
+{
+  "kind": "OFZ_IN",
+  "note": "Example demonstrating a known amendment signal; does not claim a real amendment happened.",
+  "events": [
+    {"id":"B1","date":"2026-01-10","type":"BUY","security_id":"SYNTH-OFZIN","lot_id":"L1","quantity":"1","clean_price_unit":"1000","nkd_unit":"0","nominal_unit":"1000","nominal_currency":"RUB","security_kind":"OFZ_IN"},
+    {"id":"I1","date":"2026-02-15","type":"INDEX","security_id":"SYNTH-OFZIN","indexed_nominal_unit":"1010"},
+    {"id":"R1","date":"2026-03-01","type":"REDEEM","security_id":"SYNTH-OFZIN"}
+  ],
+  "legal_review": {
+    "amendment_checks": [
+      {"source_id":"NK-RU-281","event_date":"2026-02-15","change_status":"changed","supporting_document":"SYNTHETIC_CHANGE_SIGNAL_ONLY"},
+      {"source_id":"NK-RU-328","event_date":"2026-02-15","change_status":"changed","supporting_document":"SYNTHETIC_CHANGE_SIGNAL_ONLY"}
+    ]
+  }
+}

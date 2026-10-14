@@ -35,6 +35,21 @@ For ordinary RUB traded coupon bonds use `scripts/bond_ledger.py` and [`docs/BON
 
 Use [`scripts/advanced_bond_ledger.py`](../../scripts/advanced_bond_ledger.py) and [advanced ledger reference](../../docs/ADVANCED_BOND_LEDGER.md) only for synthetic single-lot cases: FX bonds of Russian corporate issuers (currency-settled, accrual-based coupon) or positive-index OFZ-IN. It does not permit general foreign-issuer bonds, RUB-settled FX nominal, special cash-recognition rules, partial disposals or negative indexation. **Currency differences on purchased NKD remain UNCLASSIFIED**. Never infer an approved tax rate from the arithmetic. Validate all legal provisions/issue terms and request user documents if inaccessible.
 
+
+## Multi-lot FX and OFZ-IN research engine
+
+For several acquisition lots and partial FIFO sales, use [`scripts/multilot_bond_ledger.py`](../../scripts/multilot_bond_ledger.py), following [`docs/MULTILOT_BOND_LEDGER.md`](../../docs/MULTILOT_BOND_LEDGER.md). Two end-to-end fixtures cover [FX](../../examples/fx_multilot_synthetic.json) and [OFZ-IN](../../examples/ofz_in_multilot_synthetic.json). The original single-lot module remains available. The multi-lot module records historical acquisition cost, lot-specific NKD and positive nominal indexing; currency differences on purchased NKD are **unclassified**. It computes **no approved tax**. Stop if the dated legal edition, bond terms, tax market status, or special recognition treatment cannot be verified. Ask for source documents instead of guessing.
+
+
+## Unified Treasury Tax Engine (research preview)
+
+**Default entry point for supported bond events:** [`scripts/treasury_tax_engine.py`](../../scripts/treasury_tax_engine.py). This orchestrator validates one-ISIN event input, detects RUB ordinary / FX Russian corporate / positive-index OFZ-IN, and selects the appropriate existing single-lot or multi-lot backend. Read [`docs/TREASURY_TAX_ENGINE.md`](../../docs/TREASURY_TAX_ENGINE.md) before using it. Its normalized output links each arithmetic component to a stored dated rule, applicability conditions and source reference. Never treat these pointers or hard-coded rates as up-to-date law. Check controlling legal editions, amendment laws and issue terms on every request; if inaccessible, ask the user for full texts. **Every calculation remains UNVERIFIED_LEGAL_EDITION with approved tax = null until independent checks and human review.** Instruments outside supported scope are blocked.
+
+
+## Legal Rules Engine (mandatory evidence gate)
+
+After unified ledger arithmetic, the [offline rules evaluator](../../scripts/legal_rules_engine.py) assesses EACH tax row against dated rule IDs, known rate/base compatibility, required issue and bank predicates, primary-law source IDs and amendment-check records; see [full instructions](../../docs/LEGAL_RULES_ENGINE.md). **No actual law is fetched or authenticated by Python**: a user-provided file name, metadata assertion or search result cannot prove that tax law remains unchanged. For inaccessible legal texts or uncertain amendment history, request precise dated NK RF editions and amendment texts, issuer terms and tax records. Do not impute 20%/25% to a rate-less coupon ledger row or credit negative price results automatically; hard-stop complex matters. The code NEVER releases an approved tax amount even if all claimed metadata is supplied.
+
 ## Procedure
 
 1. **Confirm critical facts.** Identify tax jurisdiction and tax period; bank role (investor, issuer, intermediary or withholding agent); own/client book; licenses including any securities-market professional license; accounting method and tax accounting policy; counterparties and residency. If a missing fact can change the rule, make it an explicit unresolved condition.
