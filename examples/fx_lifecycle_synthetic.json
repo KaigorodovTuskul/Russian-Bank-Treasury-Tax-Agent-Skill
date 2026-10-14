@@ -1,0 +1,10 @@
+{
+  "kind": "FX",
+  "note": "Synthetic USD bond under Russian law with USD settlement; purchased NKD currency difference UNCLASSIFIED",
+  "events": [
+    {"id":"BUY","date":"2026-01-10","type":"BUY","security_id":"SYNTH-RU-USD-01","lot_id":"LOT-1","quantity":"1","clean_price_unit":"1000","nkd_unit":"20","nominal_unit":"1000","rub_per_nominal_currency":"90","nominal_currency":"USD","settlement_currency":"USD","issuer_law":"RU","issuer_class":"RU_CORPORATE","coupon_recognition_method":"ACCRUAL","coupon_period":"C1"},
+    {"id":"MONTH","date":"2026-01-31","type":"ACCRUE","security_id":"SYNTH-RU-USD-01","coupon_period":"C1","nkd_unit":"30","rub_per_nominal_currency":"92"},
+    {"id":"COUP","date":"2026-02-15","type":"COUPON","security_id":"SYNTH-RU-USD-01","coupon_period":"C1","coupon_unit":"60","rub_per_nominal_currency":"95"},
+    {"id":"SELL","date":"2026-03-15","type":"SELL","security_id":"SYNTH-RU-USD-01","quantity":"1","clean_price_unit":"1020","nkd_unit":"0","rub_per_nominal_currency":"100"}
+  ]
+}
