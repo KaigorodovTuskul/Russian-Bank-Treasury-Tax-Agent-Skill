@@ -45,6 +45,7 @@ In these cases **produce the partial issue matrix and document checklist**, not 
 ## On-demand references
 
 - [Versioned bond tax rules — dates, rates, formulas, sources](data/bond_tax_rules_2026.json)
+- [Primary and secondary legal source registry](references/legal-source-registry.md)
 - [Source research, amendment validation and document-request protocol](references/source-workflow.md)
 - [Bond classification and tax event map](references/bonds.md)
 - [Risk and stop gates](references/risk-gates.md)
