@@ -90,6 +90,11 @@ The [multi-lot event ledger](scripts/multilot_bond_ledger.py) supports multiple 
 
 The [unified entry point](scripts/treasury_tax_engine.py) routes RUB ordinary bonds, Russian corporate FX bonds and OFZ-IN to existing specialized calculation backends, harmonizes per-event tax component reports and attaches versioned legal rule references, conditions and missing-document requirements. Use [the integration fixture](examples/unified_fx_multilot_request.json), [the 26 integration tests](tests/test_treasury_tax_engine.py) and [developer reference](docs/TREASURY_TAX_ENGINE.md). **No live legal changes are automatically checked by the Python code; the agent must verify effective text or request user documents.** All reported taxes remain unapproved.
 
+
+## Legal Rules Engine — v0.4 research gate
+
+The [legal evidence evaluator](scripts/legal_rules_engine.py) is now invoked by the unified orchestrator. It attaches per-row rate and tax-base matching, event-date rule checks, statutory source IDs, amendment signals and a deduplicated list of missing documentary evidence. See [the method and metadata schema](docs/LEGAL_RULES_ENGINE.md). **It does not itself retrieve/read laws**, and purported documents never automatically upgrade a rule to verified or set payable tax. The AI agent must obtain and validate applicable full law editions or ask the user for them. [Dedicated tests](tests/test_legal_rules_engine.py) exercise rates, legal history, omitted documents and no-approval gates.
+
 ## Validate
 
 Requires Python 3.9+; no third-party Python packages are required.
