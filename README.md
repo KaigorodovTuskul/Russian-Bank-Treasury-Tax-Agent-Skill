@@ -82,6 +82,10 @@ An additional [RUB coupon-bond lifecycle ledger](docs/BOND_EVENT_LEDGER.md) proc
 
 The [advanced bond ledger](scripts/advanced_bond_ledger.py) adds conservative, one-lot synthetic lifecycle models for ordinary Russian corporate FX bonds and positive-index OFZ-IN. It separates historical currency acquisition cost, accrued coupon receivables, purchased NKD FX differences (explicitly unclassified) and indexed nominal income. Run `python -m unittest discover -s tests -v` and consult [scope and caveats](docs/ADVANCED_BOND_LEDGER.md). All legal conclusions remain blocked or provisional pending full texts, issue documentation, current-law verification and expert sign-off.
 
+## Multi-lot FX and indexed OFZ-IN engine (research preview)
+
+The [multi-lot event ledger](scripts/multilot_bond_ledger.py) supports multiple purchases of one ISIN, partial FIFO sales across lots, per-lot acquired NKD, historical FX rates, positive nominal indexation and full cash-flow reconciliation. It includes [FX](examples/fx_multilot_synthetic.json) and [OFZ-IN](examples/ofz_in_multilot_synthetic.json) end-to-end examples, [39 focused regression tests](tests/test_multilot_bond_ledger.py) and [detailed documentation](docs/MULTILOT_BOND_LEDGER.md). This remains a synthetic research calculator only: no legal freshness verification is performed by the code and no approved tax amount is produced.
+
 ## Validate
 
 Requires Python 3.9+; no third-party Python packages are required.
