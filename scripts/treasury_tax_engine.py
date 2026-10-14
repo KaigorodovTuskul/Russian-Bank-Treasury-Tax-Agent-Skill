@@ -308,7 +308,9 @@ def run_unified(payload: dict[str, Any], *, catalog: dict[str, Any] | None = Non
     profile = _input_profile(payload)
     rules = load_catalog() if catalog is None else catalog
     native = _calculate(profile, rules)
-    return _normalize(profile, native, rules)
+    from legal_rules_engine import assess_report
+    normalized = _normalize(profile, native, rules)
+    return assess_report(normalized, rules, payload.get("legal_review"))
 
 
 def safe_run(payload: dict[str, Any], *, catalog: dict[str, Any] | None = None) -> dict[str, Any]:
