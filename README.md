@@ -7,7 +7,7 @@
 A portable [Agent Skill](https://agentskills.io/specification) that guides AI agents through Russian bank treasury tax analysis: classify financial instruments, locate effective-law sources, calculate reproducible scenarios, challenge conclusions, and explicitly stop when evidence is incomplete.
 
 > [!IMPORTANT]
-> **Research preview — not legally validated for production.** This repository contains a workflow and synthetic test fixtures, **not** an authoritative tax calculation engine. Final Legal Judge Test and human tax-expert review have **not** been completed. Do not use its outputs to post tax entries, prepare returns, determine withholding, or execute trades without independent professional approval.
+> **Research preview — not legally validated for production.** The development branch additionally contains hard-coded dated bond rules and a deterministic **synthetic** Decimal calculator, **not** an authoritative bank tax engine. Final Legal Judge Test and human tax-expert review have **not** been completed. Do not use its outputs to post tax entries, prepare returns, determine withholding, or execute trades without independent professional approval.
 
 ## Why this skill?
 
@@ -66,6 +66,12 @@ examples/                   Synthetic research examples (not legal opinions)
 docs/                       Russian quickstart, methodology, status and roadmap
 .github/workflows/          Validation on pull requests and pushes
 ```
+
+## Dated rules and calculation engine (v0.2 draft)
+
+The draft includes 21 versioned rule records with concrete rates, applicability conditions and statutory pinpoints in [`bond_tax_rules_2026.json`](skills/russian-bank-treasury-tax/data/bond_tax_rules_2026.json). The Python [`bond_engine.py`](scripts/bond_engine.py) supplies deterministic Decimal functions for purchased NKD, issue discount, principal amortization, FIFO, currency conversion and other illustrative components. The [`test_bond_engine.py`](tests/test_bond_engine.py) suite exercises T01–T16 families, including legal hold/stop gates.
+
+**Mandatory freshness control:** Before applying a stored rule to a real transaction, validate effective historical/current tax law, all amendments and transitional provisions and bond terms. If controlling full text cannot be accessed, ask the user to supply the full relevant legal editions (e.g., licensed ConsultantPlus exports). Never claim a law is unchanged based only on missing search results. Calculations remain provisional pending legal and human review.
 
 ## Validate
 
