@@ -35,6 +35,11 @@ For ordinary RUB traded coupon bonds use `scripts/bond_ledger.py` and [`docs/BON
 
 Use [`scripts/advanced_bond_ledger.py`](../../scripts/advanced_bond_ledger.py) and [advanced ledger reference](../../docs/ADVANCED_BOND_LEDGER.md) only for synthetic single-lot cases: FX bonds of Russian corporate issuers (currency-settled, accrual-based coupon) or positive-index OFZ-IN. It does not permit general foreign-issuer bonds, RUB-settled FX nominal, special cash-recognition rules, partial disposals or negative indexation. **Currency differences on purchased NKD remain UNCLASSIFIED**. Never infer an approved tax rate from the arithmetic. Validate all legal provisions/issue terms and request user documents if inaccessible.
 
+
+## Multi-lot FX and OFZ-IN research engine
+
+For several acquisition lots and partial FIFO sales, use [`scripts/multilot_bond_ledger.py`](../../scripts/multilot_bond_ledger.py), following [`docs/MULTILOT_BOND_LEDGER.md`](../../docs/MULTILOT_BOND_LEDGER.md). Two end-to-end fixtures cover [FX](../../examples/fx_multilot_synthetic.json) and [OFZ-IN](../../examples/ofz_in_multilot_synthetic.json). The original single-lot module remains available. The multi-lot module records historical acquisition cost, lot-specific NKD and positive nominal indexing; currency differences on purchased NKD are **unclassified**. It computes **no approved tax**. Stop if the dated legal edition, bond terms, tax market status, or special recognition treatment cannot be verified. Ask for source documents instead of guessing.
+
 ## Procedure
 
 1. **Confirm critical facts.** Identify tax jurisdiction and tax period; bank role (investor, issuer, intermediary or withholding agent); own/client book; licenses including any securities-market professional license; accounting method and tax accounting policy; counterparties and residency. If a missing fact can change the rule, make it an explicit unresolved condition.
