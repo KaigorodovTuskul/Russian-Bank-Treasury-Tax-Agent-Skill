@@ -1,0 +1,14 @@
+{
+  "kind":"OFZ_IN",
+  "note":"Synthetic OFZ-IN: buy before and after first index, sell across FIFO lots, coupon only on remaining holdings, then redemption.",
+  "events":[
+    {"id":"B1","date":"2026-01-10","type":"BUY","security_id":"SYNTH-OFZIN-MULTI","lot_id":"L1","quantity":"2","clean_price_unit":"1000","nkd_unit":"0","nominal_unit":"1000","nominal_currency":"RUB","security_kind":"OFZ_IN","coupon_period":"C1"},
+    {"id":"I1","date":"2026-01-25","type":"INDEX","security_id":"SYNTH-OFZIN-MULTI","indexed_nominal_unit":"1010"},
+    {"id":"B2","date":"2026-01-28","type":"BUY","security_id":"SYNTH-OFZIN-MULTI","lot_id":"L2","quantity":"3","clean_price_unit":"1012","nkd_unit":"0","nominal_unit":"1010","nominal_currency":"RUB","security_kind":"OFZ_IN","coupon_period":"C1"},
+    {"id":"A1","date":"2026-01-31","type":"ACCRUE","security_id":"SYNTH-OFZIN-MULTI","coupon_period":"C1","nkd_unit":"5"},
+    {"id":"S1","date":"2026-02-05","type":"SELL","security_id":"SYNTH-OFZIN-MULTI","coupon_period":"C1","quantity":"3","clean_price_unit":"1015","nkd_unit":"8"},
+    {"id":"C1","date":"2026-02-15","type":"COUPON","security_id":"SYNTH-OFZIN-MULTI","coupon_period":"C1","coupon_unit":"20"},
+    {"id":"I2","date":"2026-02-28","type":"INDEX","security_id":"SYNTH-OFZIN-MULTI","indexed_nominal_unit":"1020"},
+    {"id":"R1","date":"2026-03-01","type":"REDEEM","security_id":"SYNTH-OFZIN-MULTI"}
+  ]
+}
