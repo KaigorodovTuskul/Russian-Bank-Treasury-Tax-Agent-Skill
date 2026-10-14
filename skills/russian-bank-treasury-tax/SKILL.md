@@ -16,6 +16,12 @@ metadata:
 
 Use when analyzing taxation of Russian commercial bank treasury instruments, especially a **joint-stock commercial bank with a universal banking license acting as principal**. The available detailed workflow covers **bonds** only. For REPO, interbank transactions, equities, FX dealing and derivatives, identify issues and sources but label substantive regimes `NOT_IMPLEMENTED`; do not improvise an approved method.
 
+## Mandatory hard-coded tax knowledge (research snapshot)
+
+Read [the versioned bond tax rule catalog](data/bond_tax_rules_2026.json) for **specific rates, conditions, formula identifiers, statutory pinpoint references and exclusions**. Do not answer bond-tax questions solely by pointing to laws: surface the matched rule ID, the stored rate/formula and its exact applicability requirements. Apply no rule to real bank transactions until its legal edition and prerequisites are freshly verified. Rules labelled `hard_stop` are **not executable** without further legal evidence. Scope outside bonds is still `NOT_IMPLEMENTED`.
+
+**Mandatory amendment check:** For every request, verify the effective legal edition for the event date, amendments, transitional clauses and later relevant official interpretations. Follow [the change-detection and document-request protocol](references/source-workflow.md). If full controlling texts cannot be accessed or changes cannot be ruled out reliably, **request the applicable full normative documents from the user** (e.g., ConsultantPlus DOCX), declare `UNVERIFIED_LEGAL_EDITION`, and withhold a definitive tax determination. Never silently rely on a 2026 snapshot.
+
 ## Procedure
 
 1. **Confirm critical facts.** Identify tax jurisdiction and tax period; bank role (investor, issuer, intermediary or withholding agent); own/client book; licenses including any securities-market professional license; accounting method and tax accounting policy; counterparties and residency. If a missing fact can change the rule, make it an explicit unresolved condition.
@@ -38,7 +44,8 @@ In these cases **produce the partial issue matrix and document checklist**, not 
 
 ## On-demand references
 
-- [Source research and date/version protocol](references/source-workflow.md)
+- [Versioned bond tax rules — dates, rates, formulas, sources](data/bond_tax_rules_2026.json)
+- [Source research, amendment validation and document-request protocol](references/source-workflow.md)
 - [Bond classification and tax event map](references/bonds.md)
 - [Risk and stop gates](references/risk-gates.md)
 - [Report and evidence format](references/report-format.md)
