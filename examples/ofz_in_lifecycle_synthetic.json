@@ -1,0 +1,11 @@
+{
+  "kind": "OFZ_IN",
+  "note": "Synthetic indexed nominal 1000 to 1020; coupon 20; positive nominal indexation only; not tax advice",
+  "events": [
+    {"id":"BUY","date":"2026-01-10","type":"BUY","security_id":"SYNTH-OFZIN","lot_id":"LOT-1","quantity":"1","clean_price_unit":"1000","nkd_unit":"0","nominal_unit":"1000","nominal_currency":"RUB","security_kind":"OFZ_IN"},
+    {"id":"INDEX1","date":"2026-01-31","type":"INDEX","security_id":"SYNTH-OFZIN","indexed_nominal_unit":"1010"},
+    {"id":"COUP","date":"2026-02-15","type":"COUPON","security_id":"SYNTH-OFZIN","coupon_period":"C1","coupon_unit":"20"},
+    {"id":"INDEX2","date":"2026-02-28","type":"INDEX","security_id":"SYNTH-OFZIN","indexed_nominal_unit":"1020"},
+    {"id":"REDEEM","date":"2026-03-01","type":"REDEEM","security_id":"SYNTH-OFZIN"}
+  ]
+}
